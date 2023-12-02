@@ -60,11 +60,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - images/scissors.jpeg
-     - images/haircut.jpeg
-     - images/haircolor.jpeg
+     - images/scissors2.jpg
+     - images/haircut2.jpg
+     - images/haircolor2.jpg
      - images/shaving.jpeg
-     - images/massage.jpeg
+     - images/massage2.jpg
      - images/facecare.jpeg
   #   - images/a_dot_ham.jpeg
 

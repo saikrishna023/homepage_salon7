@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:homepage_salon7/services..dart';
 
 
-class ServicesListScreen extends StatelessWidget {
-  const ServicesListScreen({Key? key});
+class ServicesListScreen extends StatefulWidget {
+  ServicesListScreen({Key? key}) : super(key: key);
+
+  @override
+  _ServicesListScreenState createState() => _ServicesListScreenState();
+}
+
+class _ServicesListScreenState extends State<ServicesListScreen> {
+  List<Services> selectedServices = [];
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +48,10 @@ class ServicesListScreen extends StatelessWidget {
                         primary: Colors.purple,
                       ),
                       onPressed: () {
-                        _showAddPopup(context, service.title);
+                        _toggleService(context, service);
                       },
                       child: Text(
-                        'Add',
+                        _isSelected(service) ? 'Remove' : 'Add',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -58,9 +65,25 @@ class ServicesListScreen extends StatelessWidget {
     );
   }
 
-  void _showAddPopup(BuildContext context, String serviceName) {
-    List<String> selectedServices = []; // Initialize an empty list
+  bool _isSelected(Services service) {
+    return selectedServices.contains(service);
+  }
 
+  void _toggleService(BuildContext context, Services service) {
+    if (_isSelected(service)) {
+      setState(() {
+        selectedServices.remove(service);
+      });
+    } else {
+      setState(() {
+        selectedServices.add(service);
+      });
+    }
+
+    _showSelectedServicesPopup(context);
+  }
+
+  void _showSelectedServicesPopup(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -73,7 +96,7 @@ class ServicesListScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Item Added to Cart!',
+                    'Item(s) Added/Removed to Cart!',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -85,9 +108,9 @@ class ServicesListScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
-                  for (String service in selectedServices)
+                  for (Services service in selectedServices)
                     Text(
-                      '- $service',
+                      '- ${service.title}',
                       style: TextStyle(fontSize: 16),
                     ),
                   SizedBox(height: 16),

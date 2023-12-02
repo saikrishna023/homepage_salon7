@@ -19,7 +19,7 @@ List<Services> serviceList = [
     title: "Men's Haircut",
     amount: "Rs 249/-",
     description: ('Professional haircut that sutes your face shape and Speclally trained stylish for men.'),
-    image: 'images/haircut.jpeg',
+    image: 'images/haircut2.jpg',
   ),
 
   Services(
@@ -32,7 +32,7 @@ List<Services> serviceList = [
     title: "Hair Colour",
     amount: "Rs 299/-",
     description: ('Even and mess- free colour application'),
-    image: 'images/haircolor.jpeg',
+    image: 'images/haircolor2.jpg',
   ),
   Services(
       title: "Face Care",
@@ -45,5 +45,5 @@ List<Services> serviceList = [
       title: "Massage",
       amount: "Rs 399/-",
       description: ('Relaxing oil Massage to treat stiff / tense muscle & relives stress'),
-      image: 'images/massage.jpeg'),
+      image: 'images/massage2.jpg'),
 ];
